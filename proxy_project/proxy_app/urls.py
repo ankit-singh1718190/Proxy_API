@@ -8,7 +8,7 @@ from .views import (
 urlpatterns = [
     path('ips/', ResidentialIPList.as_view(), name='ip-list'),
     path('usage/', ProxyUsageCreate.as_view(), name='usage-create'),
-    path('dashboard/',dashboard,name='dashboard'),
+    path('',dashboard,name='dashboard'),
     # ResidentialIP endpoints
     path('api/ips/', ResidentialIPListCreate.as_view(), name='ip-list-create'),
     path('api/ips/<int:pk>/', ResidentialIPDetail.as_view(), name='ip-detail'),
