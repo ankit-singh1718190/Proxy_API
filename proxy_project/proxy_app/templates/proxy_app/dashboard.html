@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Proxy Dashboard</title>
+</head>
+<body>
+    <h1>Residential IPs</h1>
+    <ul>
+        {% for ip in ips %}
+            <li>{{ ip.ip_address }} - {{ ip.is_active|yesno:"Active,Inactive" }}</li>
+        {% endfor %}
+    </ul>
+
+    <h1>Proxy Usage</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>IP Address</th>
+                <th>Usage Start</th>
+                <th>Usage End</th>
+                <th>Data Transferred (MB)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usage in usage_records %}
+                <tr>
+                    <td>{{ usage.user.username }}</td>
+                    <td>{{ usage.ip_address.ip_address }}</td>
+                    <td>{{ usage.usage_start }}</td>
+                    <td>{{ usage.usage_end|default:"-" }}</td>
+                    <td>{{ usage.data_transferred }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
